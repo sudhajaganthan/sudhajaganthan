@@ -1,33 +1,28 @@
-# importing whole module
-from tkinter import *
-from tkinter.ttk import *
- 
-# importing strftime function to
-# retrieve system's time
-from time import strftime
- 
-# creating tkinter window
-root = Tk()
-root.title('Clock')
- 
-# This function is used to
-# display time on the label
- 
-def time():
-    string = strftime('%H:%M:%S %p')
-    lbl.config(text=string)
-    lbl.after(1000, time)
- 
- 
-# Styling the label widget so that clock
-# will look more attractive
-lbl = Label(root, font=('calibri', 40, 'bold'),
-            background='purple',
-            foreground='white')
- 
-# Placing clock at the centre
-# of the tkinter window
-lbl.pack(anchor='center')
-time()
- 
-mainloop()
+import random
+
+options = ("rock", "paper", "scissors")
+winning = ("scissors", "rock", "paper")
+running = True
+
+while running:
+
+    player = None
+    computer = random.choice(options)
+
+    while player not in options:
+        player = input("Enter a choice (rock, paper, scissors): ").lower()
+
+    print(f"Player: {player}")
+    print(f"Computer: {computer}")
+
+    if player == computer:
+        print("It's a tie!")
+    elif options.index(player) == winning.index(computer):
+        print("You win !")
+    else:
+        print("You lose!")
+
+    if not input("Play again? (y/n): ").lower() == "y":
+        running = False
+
+print("Thanks for playing!")
